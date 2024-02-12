@@ -47,7 +47,7 @@ def execProg(dire):
         return None
     for el in os.listdir(dire):
         if el != "makefile" and '.' not in el:
-            if "extensive" in dire:
+            if "exhaustive" in dire:
                 if "sequential" in dire:
                     for inp in fileinput:
                         for nu in num_step:

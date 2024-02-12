@@ -19,3 +19,4 @@ clean:
 	rm -f $(DIR)/*.o
 	rm -f $(COMMON_BH_DIR)/*.o
 	rm -f *.o
+	rm -f omp_bh

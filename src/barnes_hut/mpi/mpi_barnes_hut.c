@@ -64,7 +64,7 @@ void run_simulation(FILE* out_fp)
 
     for (n = 0; n < num_steps; ++n)
     {
-        for (i = my_slice_start; i < my_slice_end; ++i)
+        for (i = my_slice_start; i <= my_slice_end; ++i)
         {
             /* calculation of the new velocities of each body */
             sum_vel = compute_velocity_increment(bho, &bodies[i], G, theta);
@@ -74,7 +74,7 @@ void run_simulation(FILE* out_fp)
         }
 
         /* calculation and updating of new positions */
-        for (i = my_slice_start; i < my_slice_end; ++i)
+        for (i = my_slice_start; i <= my_slice_end; ++i)
         {
             bodies[i].pos.x += localv[i - my_slice_start].x * TIME_DELTA;
             bodies[i].pos.y += localv[i - my_slice_start].y * TIME_DELTA;
