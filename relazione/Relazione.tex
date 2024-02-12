@@ -129,9 +129,9 @@
 
     \begin{figure}[h]
         \centering
-        \includegraphics[width=\textwidth]{images/seq_ext_1.png}
-        \caption{Screenshot del frammento di codice principale di \texttt{seq\_ext\_1.c}}
-        \label{fig:seq_ext_1}
+        \includegraphics[width=\textwidth]{images/seq_exh_1.png}
+        \caption{Screenshot del frammento di codice principale di \texttt{seq\_exh\_1.c}}
+        \label{fig:seq_exh_1}
     \end{figure}
 
     \newpage
@@ -147,9 +147,9 @@
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=\textwidth]{images/seq_ext_2.png}
-        \caption{Screenshot del frammento di codice principale di \texttt{seq\_ext\_2.c}}
-        \label{fig:seq_ext_2}
+        \includegraphics[width=\textwidth]{images/seq_exh_2.png}
+        \caption{Screenshot del frammento di codice principale di \texttt{seq\_exh\_2.c}}
+        \label{fig:seq_exh_2}
     \end{figure}
 
     \begin{figure}[H]
@@ -207,12 +207,12 @@
                 (10000, 129.205970407)
                 };
 
-            \legend{\texttt{seq\_ext\_1},\texttt{seq\_ext\_2}}
+            \legend{\texttt{seq\_exh\_1},\texttt{seq\_exh\_2}}
             \end{axis}
         \end{tikzpicture}
 
-        \caption{Confronto delle performance di \texttt{seq\_ext\_1} e \texttt{seq\_ext\_2} su 100 passi di simulazione da 1000 a 10000 corpi (Lenovo IdeaPad 5)}
-        \label{fig:seq_ext_table_ip5}
+        \caption{Confronto delle performance di \texttt{seq\_exh\_1} e \texttt{seq\_exh\_2} su 100 passi di simulazione da 1000 a 10000 corpi (Lenovo IdeaPad 5)}
+        \label{fig:seq_exh_table_ip5}
     \end{figure}
 
     \begin{figure}[H]
@@ -270,12 +270,12 @@
                 (10000, 78.62022018)
                 };
 
-            \legend{\texttt{seq\_ext\_1},\texttt{seq\_ext\_2}}
+            \legend{\texttt{seq\_exh\_1},\texttt{seq\_exh\_2}}
             \end{axis}
         \end{tikzpicture}
 
-        \caption{Confronto delle performance di \texttt{seq\_ext\_1} e \texttt{seq\_ext\_2} su 100 passi di simulazione da 1000 a 10000 corpi (MacBook Air M1)}
-        \label{fig:seq_ext_table_m1}
+        \caption{Confronto delle performance di \texttt{seq\_exh\_1} e \texttt{seq\_exh\_2} su 100 passi di simulazione da 1000 a 10000 corpi (MacBook Air M1)}
+        \label{fig:seq_exh_table_m1}
     \end{figure}
     
     \quad
@@ -286,7 +286,7 @@
 
     Tramite la libreria \textbf{OpenMP}, il codice mostrato nella sezione precedente può facilmente essere parallelizzato applicando la direttiva \texttt{\#pragma omp for} sul primo \textit{ciclo for} interno (ossia quello che itera sui corpi), in modo che ognuno dei $p$ thread su cui viene parallelizzato il ciclo vada a lavorare con $\mathbf{\frac{n}{p}}$ \textbf{corpi}.
 
-    Tuttavia, tale parallelizzazione \underline{non} può essere applicata sulla seconda versione del programma sequenziale (ossia \texttt{seq\_ext\_2}), poiché potrebbe verificarsi una \textbf{race condition} nell'aggiornare la velocità del corpo $b_j$:
+    Tuttavia, tale parallelizzazione \underline{non} può essere applicata sulla seconda versione del programma sequenziale (ossia \texttt{seq\_exh\_2}), poiché potrebbe verificarsi una \textbf{race condition} nell'aggiornare la velocità del corpo $b_j$:
     
     \begin{itemize}
         \item Supponiamo che un primo thread stia calcolando l'interazione tra il corpo $b_i$ e $b_j$, aggiornando le velocità di quest'ultimi e che un secondo thread stia calcolando l'interazione tra il corpo $b_j$ con un altro corpo $b_x$, aggiornando la velocità di quest'ultimi
@@ -295,13 +295,13 @@
 
     Consideriamo ora il \textit{ciclo for} che si occupa della \textit{scrittura dell'output}. Parallelizzando tale ciclo tramite la direttiva \texttt{\#pragma omp for}, i vari thread potrebbero accedere al file simultaneamente, scrivendo  
 
-    Di conseguenza, solo il calcolo delle velocità della versione \texttt{seq\_ext\_1} risulta essere parallelizzabile. Per tanto, i \textbf{confronti statistici} effettuati nelle sezioni successive verranno effettuati \underline{solo} con la versione \texttt{seq\_ext\_1}.
+    Di conseguenza, solo il calcolo delle velocità della versione \texttt{seq\_exh\_1} risulta essere parallelizzabile. Per tanto, i \textbf{confronti statistici} effettuati nelle sezioni successive verranno effettuati \underline{solo} con la versione \texttt{seq\_exh\_1}.
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=\textwidth]{images/omp_ext_1.png}
-        \caption{Screenshot del frammento di codice principale di \texttt{omp\_ext\_1.c}}
-        \label{fig:omp_ext_1}
+        \includegraphics[width=\textwidth]{images/omp_exh_1.png}
+        \caption{Screenshot del frammento di codice principale di \texttt{omp\_exh\_1.c}}
+        \label{fig:omp_exh_1}
     \end{figure}
 
     \begin{figure}[H]
@@ -415,7 +415,7 @@
                 };
     
 
-            \legend{\texttt{seq\_ext\_1},\texttt{omp\_ext\_1} (1), \texttt{omp\_ext\_1} (2), \texttt{omp\_ext\_1} (4), \texttt{omp\_ext\_1} (8), }
+            \legend{\texttt{seq\_exh\_1},\texttt{omp\_exh\_1} (1), \texttt{omp\_exh\_1} (2), \texttt{omp\_exh\_1} (4), \texttt{omp\_exh\_1} (8), }
             \end{axis}
         \end{tikzpicture}
 
@@ -528,27 +528,27 @@
                 (10000, 51.738933086)
                 };
 
-            \legend{\texttt{seq\_ext\_1},\texttt{omp\_ext\_1} (1), \texttt{omp\_ext\_1} (2), \texttt{omp\_ext\_1} (4), \texttt{omp\_ext\_1} (8), }
+            \legend{\texttt{seq\_exh\_1},\texttt{omp\_exh\_1} (1), \texttt{omp\_exh\_1} (2), \texttt{omp\_exh\_1} (4), \texttt{omp\_exh\_1} (8), }
             \end{axis}
         \end{tikzpicture}
 
-        \caption{Confronto delle performance di \texttt{seq\_ext\_1} e \texttt{omp\_ext\_1} su 100 passi di simulazione da 1000 a 10000 corpi. I numeri tra parentesi nella legenda del grafico indicano il numero di thread attivi}
-        \label{fig:omp_1_ext_graph}
+        \caption{Confronto delle performance di \texttt{seq\_exh\_1} e \texttt{omp\_exh\_1} su 100 passi di simulazione da 1000 a 10000 corpi. I numeri tra parentesi nella legenda del grafico indicano il numero di thread attivi}
+        \label{fig:omp_1_exh_graph}
     \end{figure}
 
     \newpage
 
     \subsection{Riduzione del false sharing}
 
-    Nonostante l'incremento delle performance a livello di tempo di esecuzione ottenuto con la versione \texttt{omp\_ext\_1}, tale parallelizzazione risulta inefficiente da un punto di vista di \textbf{gestione delle cache}.
+    Nonostante l'incremento delle performance a livello di tempo di esecuzione ottenuto con la versione \texttt{omp\_exh\_1}, tale parallelizzazione risulta inefficiente da un punto di vista di \textbf{gestione delle cache}.
     
     Nel secondo \textit{ciclo for} interno, ogni thread legge il proprio valore \texttt{bodies[i].pos} e aggiorna i valori del proprio valore \texttt{bodies[i].vel}, entrambi dettati dal proprio indice attuale \texttt{i}.
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=\textwidth]{images/omp_ext_1_false_sharing.png}
-        \caption{Screenshot del frammento di codice di interesse di \texttt{omp\_ext\_1.c}}
-        \label{fig:omp_ext_1_false_sharing}
+        \includegraphics[width=\textwidth]{images/omp_exh_1_false_sharing.png}
+        \caption{Screenshot del frammento di codice di interesse di \texttt{omp\_exh\_1.c}}
+        \label{fig:omp_exh_1_false_sharing}
     \end{figure}
 
     Poiché all'interno dello struct \texttt{bodies} i due attributi \texttt{vel} e \texttt{pos} risultano essere memorizzati sequenzialmente all'interno della memoria (ossia accanto), ogni volta che il valore di \texttt{bodies[i].vel} viene modificato da un thread e successivamente un altro thread accede a \texttt{bodies[j].pos}, se $i = j$ allora l'\textbf{intero} blocco di cache contenente lo struct \texttt{bodies[i]} verrà considerato dal secondo thread come \textit{"sporco"} poiché non sincronizzato con quello del primo thread, dunque potenzialmente scorretto, venendo per tanto \textbf{ricaricato} nonostante il valore di \texttt{bodies[i].pos} non sia stato realmente modificato (\textbf{false sharing tra le cache}). Inoltre, considerando il fatto che anche l'array \texttt{bodies} memorizzi i vari corpi sequenzialmente, il false sharing si verifica potenzialmente ad ogni aggiornamento di un corpo.
@@ -558,9 +558,9 @@
     
     \begin{figure}[H]
         \centering
-        \includegraphics[width=\textwidth]{images/omp_ext_2.png}
-        \caption{Screenshot del frammento di codice principale di \texttt{omp\_ext\_2.c}}
-        \label{fig:omp_ext_2}
+        \includegraphics[width=\textwidth]{images/omp_exh_2.png}
+        \caption{Screenshot del frammento di codice principale di \texttt{omp\_exh\_2.c}}
+        \label{fig:omp_exh_2}
     \end{figure}
     
     \begin{figure}[H]
@@ -674,7 +674,7 @@
                 };
     
 
-            \legend{\texttt{seq\_ext\_1},\texttt{omp\_ext\_2} (1), \texttt{omp\_ext\_2} (2), \texttt{omp\_ext\_2} (4), \texttt{omp\_ext\_2} (8), }
+            \legend{\texttt{seq\_exh\_1},\texttt{omp\_exh\_2} (1), \texttt{omp\_exh\_2} (2), \texttt{omp\_exh\_2} (4), \texttt{omp\_exh\_2} (8), }
             \end{axis}
         \end{tikzpicture}
 
@@ -787,19 +787,19 @@
                 (10000, 47.738933086)
                 };
 
-            \legend{\texttt{seq\_ext\_1},\texttt{omp\_ext\_2} (1), \texttt{omp\_ext\_2} (2), \texttt{omp\_ext\_2} (4), \texttt{omp\_ext\_2} (8), }
+            \legend{\texttt{seq\_exh\_1},\texttt{omp\_exh\_2} (1), \texttt{omp\_exh\_2} (2), \texttt{omp\_exh\_2} (4), \texttt{omp\_exh\_2} (8), }
             \end{axis}
         \end{tikzpicture}
 
-        \caption{Confronto delle performance di \texttt{seq\_ext\_1} e \texttt{omp\_ext\_2} su 100 passi di simulazione da 1000 a 10000 corpi. I numeri tra parentesi nella legenda del grafico indicano il numero di thread attivi}
-        \label{fig:omp_2_ext_graph}
+        \caption{Confronto delle performance di \texttt{seq\_exh\_1} e \texttt{omp\_exh\_2} su 100 passi di simulazione da 1000 a 10000 corpi. I numeri tra parentesi nella legenda del grafico indicano il numero di thread attivi}
+        \label{fig:omp_2_exh_graph}
     \end{figure}
 
     \newpage
     
     \subsection{Riduzione dell'overhead di OpenMP}
 
-    Oltre a migliorare la gestione delle cache, è possibile \textbf{minimizzare l'overhead} imposto da OpenMPI. Difatti, nella versione \texttt{omp\_ext\_2}, le due direttive \texttt{\#pragma omp for} vengono maneggiate dal pre-compilatore di OpenMP, venendo sostituite con dei pezzi di codice che vadano a calcolare il modo in cui vengono separati automaticamente gli indici del \textit{ciclo for}.
+    Oltre a migliorare la gestione delle cache, è possibile \textbf{minimizzare l'overhead} imposto da OpenMPI. Difatti, nella versione \texttt{omp\_exh\_2}, le due direttive \texttt{\#pragma omp for} vengono maneggiate dal pre-compilatore di OpenMP, venendo sostituite con dei pezzi di codice che vadano a calcolare il modo in cui vengono separati automaticamente gli indici del \textit{ciclo for}.
 
     Poiché nel programma sono presenti due direttive \texttt{\#pragma omp for} situate all'interno del ciclo esterno che itera $k$ volte sui passaggi della simulazione, tali suddivisioni vengono effettuate per un totale di $2k$ volte.
 
@@ -807,14 +807,14 @@
     
     \begin{figure}[H]
         \centering
-        \includegraphics[width=\textwidth]{images/omp_ext_3_1.png}
+        \includegraphics[width=\textwidth]{images/omp_exh_3_1.png}
     \end{figure}
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=\textwidth]{images/omp_ext_3_2.png}
-        \caption{Screenshot del frammento di codice principale di \texttt{omp\_ext\_3.c}}
-        \label{fig:omp_ext_3}
+        \includegraphics[width=\textwidth]{images/omp_exh_3_2.png}
+        \caption{Screenshot del frammento di codice principale di \texttt{omp\_exh\_3.c}}
+        \label{fig:omp_exh_3}
     \end{figure}
 
     Nonostante ciò, tale cambiamento \textbf{influisce poco} sulle prestazioni del programma. Difatti, rispetto alla versione precedente, notiamo come l'overhead \textbf{cresca} nel caso in cui vi siano pochi thread in utilizzo (circa il 15\% più lento), mentre esso \textbf{diminuisca} nel caso in cui vi siano molti thread in utilizzo (circa il 10\% più veloce).
@@ -930,7 +930,7 @@
                     (10000, 30.738933086)
                     };
 
-            \legend{\texttt{seq\_ext\_1},\texttt{omp\_ext\_3} (1), \texttt{omp\_ext\_3} (2), \texttt{omp\_ext\_3} (4), \texttt{omp\_ext\_3} (8), }
+            \legend{\texttt{seq\_exh\_1},\texttt{omp\_exh\_3} (1), \texttt{omp\_exh\_3} (2), \texttt{omp\_exh\_3} (4), \texttt{omp\_exh\_3} (8), }
             \end{axis}
         \end{tikzpicture}
 
@@ -1043,12 +1043,12 @@
                 (10000, 43.738933086)
                 };
 
-            \legend{\texttt{seq\_ext\_1},\texttt{omp\_ext\_3} (1), \texttt{omp\_ext\_3} (2), \texttt{omp\_ext\_3} (4), \texttt{omp\_ext\_3} (8), }
+            \legend{\texttt{seq\_exh\_1},\texttt{omp\_exh\_3} (1), \texttt{omp\_exh\_3} (2), \texttt{omp\_exh\_3} (4), \texttt{omp\_exh\_3} (8), }
             \end{axis}
         \end{tikzpicture}
 
-        \caption{Confronto delle performance di \texttt{seq\_ext\_1} e \texttt{omp\_ext\_3} su 100 passi di simulazione da 1000 a 10000 corpi. I numeri tra parentesi nella legenda del grafico indicano il numero di thread attivi}
-        \label{fig:omp_3_ext_graph}
+        \caption{Confronto delle performance di \texttt{seq\_exh\_1} e \texttt{omp\_exh\_3} su 100 passi di simulazione da 1000 a 10000 corpi. I numeri tra parentesi nella legenda del grafico indicano il numero di thread attivi}
+        \label{fig:omp_3_exh_graph}
     \end{figure}
     \newpage
 
@@ -1060,9 +1060,9 @@
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=\textwidth]{images/omp_ext_4.png}
-        \caption{Screenshot del frammento di codice principale di \texttt{omp\_ext\_4.c}}
-        \label{fig:omp_ext_4}
+        \includegraphics[width=\textwidth]{images/omp_exh_4.png}
+        \caption{Screenshot del frammento di codice principale di \texttt{omp\_exh\_4.c}}
+        \label{fig:omp_exh_4}
     \end{figure}
 
     \begin{figure}[H]
@@ -1175,7 +1175,7 @@
                 (10000, 33.649306774)
                 };
 
-            \legend{\texttt{seq\_ext\_1},\texttt{omp\_ext\_3} (1), \texttt{omp\_ext\_3} (2), \texttt{omp\_ext\_3} (4), \texttt{omp\_ext\_3} (8), }
+            \legend{\texttt{seq\_exh\_1},\texttt{omp\_exh\_3} (1), \texttt{omp\_exh\_3} (2), \texttt{omp\_exh\_3} (4), \texttt{omp\_exh\_3} (8), }
             \end{axis}
         \end{tikzpicture}
 
@@ -1288,12 +1288,12 @@
                 (10000, 37.738933086)
                 };
 
-            \legend{\texttt{seq\_ext\_1},\texttt{omp\_ext\_4} (1), \texttt{omp\_ext\_4} (2), \texttt{omp\_ext\_4} (4), \texttt{omp\_ext\_4} (8), }
+            \legend{\texttt{seq\_exh\_1},\texttt{omp\_exh\_4} (1), \texttt{omp\_exh\_4} (2), \texttt{omp\_exh\_4} (4), \texttt{omp\_exh\_4} (8), }
             \end{axis}
         \end{tikzpicture}
 
-        \caption{Confronto delle performance di \texttt{seq\_ext\_1} e \texttt{omp\_ext\_4} su 100 passi di simulazione da 1000 a 10000 corpi. I numeri tra parentesi nella legenda del grafico indicano il numero di thread attivi}
-        \label{fig:omp_4_ext_graph}
+        \caption{Confronto delle performance di \texttt{seq\_exh\_1} e \texttt{omp\_exh\_4} su 100 passi di simulazione da 1000 a 10000 corpi. I numeri tra parentesi nella legenda del grafico indicano il numero di thread attivi}
+        \label{fig:omp_4_exh_graph}
     \end{figure}
     
     \newpage
@@ -1306,7 +1306,7 @@
 
     Tramite la libreria \textbf{MPI} è possibile parallelizzare il programma creando diversi processi separati (\textbf{memoria distribuita}) che comunicano tramite direttive di scambio di messaggi. Lavorando su zone di memoria separate si evita di incorrere in fenomeni come \textbf{race contion} o \textbf{false sharing} al costo di dover \textit{impostare correttamente gli scambi} tra i processi e degli scambi stessi.
 
-    Un primo approccio per parallelizzare la versione estensiva prevede la suddivisione dei corpi su cui lavorare tra i processi generati per poi riunire i risultati.
+    Un primo approccio per parallelizzare la versione esaustiva prevede la suddivisione dei corpi su cui lavorare tra i processi generati per poi riunire i risultati.
     
     Nel caso particolare in cui si dovesse effettuare \textbf{un solo step} della simulazione, è possibile far sì che un solo processo acquisisca i dati di tutti gli altri processi, restituendoli in output. In tal caso, risulta sufficiente far sì che il \textit{master process} (ossia il processo 0) raccolga i dati calcolati, effettuando una comunicazione All-to-One. Per effettuare una simulazione di \textbf{più passi}, invece, tutti i processi hanno bisogno di conoscere i valori calcolati da ogni altro processo al passo precedente, richiedendo una comunicazione All-to-All.
 
@@ -1327,18 +1327,18 @@
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=\textwidth]{images/mpi_ext_1_1.png}
-        \caption{Screenshot del frammento di codice di interesse di \texttt{mpi\_ext\_1.c}}
-        \label{fig:mpi_ext_1_1}
+        \includegraphics[width=\textwidth]{images/mpi_exh_1_1.png}
+        \caption{Screenshot del frammento di codice di interesse di \texttt{mpi\_exh\_1.c}}
+        \label{fig:mpi_exh_1_1}
     \end{figure}
 
     Inoltre, per poter effettuare le comunicazioni, è necessario che ogni processo crei a priori i datatype \texttt{MPI\_Vec3D} e \texttt{MPI\_Body} del tutto equivalenti ai due struct utilizzati nella versione seriale, ma in grado di essere trattati dalle comunicazioni di MPI. 
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=\textwidth]{images/mpi_ext_1_2.png}
-        \caption{Screenshot del frammento di codice di interesse di \texttt{mpi\_ext\_1.c}}
-        \label{fig:mpi_ext_1_2}
+        \includegraphics[width=\textwidth]{images/mpi_exh_1_2.png}
+        \caption{Screenshot del frammento di codice di interesse di \texttt{mpi\_exh\_1.c}}
+        \label{fig:mpi_exh_1_2}
     \end{figure}
 
     Una volta calcolata la suddivisione, i \textit{cicli for} vengono modificati per far sì che i processi svolgano solo i calcoli inerenti alla propria porzione di corpi. In fine solo il master process (rank = 0) scrive i risultati sull'output.
@@ -1347,9 +1347,9 @@
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=\textwidth]{images/mpi_ext_1_3.png}
-        \caption{Screenshot del frammento di codice di interesse di \texttt{mpi\_ext\_1.c}}
-        \label{fig:mpi_ext_1_3}
+        \includegraphics[width=\textwidth]{images/mpi_exh_1_3.png}
+        \caption{Screenshot del frammento di codice di interesse di \texttt{mpi\_exh\_1.c}}
+        \label{fig:mpi_exh_1_3}
     \end{figure}
 
     A seguito dell'analisi precedente, dunque, possiamo stabilire che, per natura stessa dell'algoritmo, l'uso di una parallelizzazione a memoria distribuita risulta \textbf{inefficiente} rispetto a quella a memoria condivisa. Tale risultato si evince dall'elevata mole di comunicazioni richieste tra i vari processi (una per passo della simulazione), rallentando significativamente il programma. In particolare, all'aumentare dei processi involti nella parallelizzazione, tali comunicazioni richiedono un \textbf{vasto overhead}.
@@ -1465,7 +1465,7 @@
                 };
     
 
-            \legend{\texttt{seq\_ext\_1},\texttt{mpi\_ext\_1} (1), \texttt{mpi\_ext\_1} (2), \texttt{mpi\_ext\_1} (4), \texttt{mpi\_ext\_1} (8), }
+            \legend{\texttt{seq\_exh\_1},\texttt{mpi\_exh\_1} (1), \texttt{mpi\_exh\_1} (2), \texttt{mpi\_exh\_1} (4), \texttt{mpi\_exh\_1} (8), }
             \end{axis}
         \end{tikzpicture}
 
@@ -1578,27 +1578,27 @@
                 };
     
 
-            \legend{\texttt{seq\_ext\_1},\texttt{mpi\_ext\_1} (1), \texttt{mpi\_ext\_1} (2), \texttt{mpi\_ext\_1} (4), \texttt{mpi\_ext\_1} (8), }
+            \legend{\texttt{seq\_exh\_1},\texttt{mpi\_exh\_1} (1), \texttt{mpi\_exh\_1} (2), \texttt{mpi\_exh\_1} (4), \texttt{mpi\_exh\_1} (8), }
             \end{axis}
         \end{tikzpicture}
 
-        \caption{Confronto delle performance di \texttt{seq\_ext\_1} e \texttt{mpi\_ext\_1} su 100 passi di simulazione da 1000 a 10000 corpi. I numeri tra parentesi nella legenda del grafico indicano il numero di thread attivi}
-        \label{fig:mpi_ext_graph}
+        \caption{Confronto delle performance di \texttt{seq\_exh\_1} e \texttt{mpi\_exh\_1} su 100 passi di simulazione da 1000 a 10000 corpi. I numeri tra parentesi nella legenda del grafico indicano il numero di thread attivi}
+        \label{fig:mpi_exh_graph}
     \end{figure}
 
     \newpage
 
     \subsection{Riduzione e localizzazione dei dati trasmessi}
 
-    Poiché le comunicazioni comunicazioni risultano essere il \textit{bottleneck} della versione \texttt{mpi\_ext\_1}, risulta ovvio analizzare \textbf{modalità per alleggerire} tali comunicazioni riducendo la quantità dei dati trasmessi da esse.
+    Poiché le comunicazioni comunicazioni risultano essere il \textit{bottleneck} della versione \texttt{mpi\_exh\_1}, risulta ovvio analizzare \textbf{modalità per alleggerire} tali comunicazioni riducendo la quantità dei dati trasmessi da esse.
     
     In particolare, notiamo che al fine di poter eseguire il passo successivo della simulazione, è sufficiente che ogni processo trasmetta a tutti gli altri processi solo ed esclusivamente le proprie \textbf{nuove posizioni} in quanto le masse dei corpi rimangono invariate durante la simulazione e in quanto le nuove velocità dei corpi esterni alla porzione assegnata al processo stesso non siano rilevanti per il calcolo. Di conseguenza, i dati comunicati da ogni processo si riducono $\frac{n}{p} \cdot 7$ double a solo $\frac{n}{p} \cdot 3$ double.
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=\textwidth]{images/mpi_ext_2.png}
-        \caption{Screenshot del frammento di codice di interesse di \texttt{mpi\_ext\_2.c}}
-        \label{fig:mpi_ext_2}
+        \includegraphics[width=\textwidth]{images/mpi_exh_2.png}
+        \caption{Screenshot del frammento di codice di interesse di \texttt{mpi\_exh\_2.c}}
+        \label{fig:mpi_exh_2}
     \end{figure}
     
     Tuttavia, i test effettuati dimostrano che riducendo la dimensione del pacchetto trasmesso da ogni processo i tempi di comunicazione rimangono \textbf{per lo più invariati}, rendendo tale cambiamento utile solo superficialmente.
@@ -1714,7 +1714,7 @@
                 };
     
 
-            \legend{\texttt{seq\_ext\_1},\texttt{mpi\_ext\_2} (1), \texttt{mpi\_ext\_2} (2), \texttt{mpi\_ext\_2} (4), \texttt{mpi\_ext\_2} (8), }
+            \legend{\texttt{seq\_exh\_1},\texttt{mpi\_exh\_2} (1), \texttt{mpi\_exh\_2} (2), \texttt{mpi\_exh\_2} (4), \texttt{mpi\_exh\_2} (8), }
             \end{axis}
         \end{tikzpicture}
 
@@ -1827,12 +1827,12 @@
                 };
     
 
-            \legend{\texttt{seq\_ext\_1},\texttt{mpi\_ext\_2} (1), \texttt{mpi\_ext\_2} (2), \texttt{mpi\_ext\_2} (4), \texttt{mpi\_ext\_2} (8), }
+            \legend{\texttt{seq\_exh\_1},\texttt{mpi\_exh\_2} (1), \texttt{mpi\_exh\_2} (2), \texttt{mpi\_exh\_2} (4), \texttt{mpi\_exh\_2} (8), }
             \end{axis}
         \end{tikzpicture}
 
-        \caption{Confronto delle performance di \texttt{seq\_ext\_1} e \texttt{mpi\_ext\_2} su 100 passi di simulazione da 1000 a 10000 corpi. I numeri tra parentesi nella legenda del grafico indicano il numero di thread attivi}
-        \label{fig:mpi_2_ext_graph}
+        \caption{Confronto delle performance di \texttt{seq\_exh\_1} e \texttt{mpi\_exh\_2} su 100 passi di simulazione da 1000 a 10000 corpi. I numeri tra parentesi nella legenda del grafico indicano il numero di thread attivi}
+        \label{fig:mpi_2_exh_graph}
     \end{figure}
 
     \newpage
@@ -1841,9 +1841,9 @@
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=\textwidth]{images/mpi_ext_3.png}
-        \caption{Screenshot del frammento di codice di interesse di \texttt{mpi\_ext\_3.c}}
-        \label{fig:mpi_ext_3}
+        \includegraphics[width=\textwidth]{images/mpi_exh_3.png}
+        \caption{Screenshot del frammento di codice di interesse di \texttt{mpi\_exh\_3.c}}
+        \label{fig:mpi_exh_3}
     \end{figure}
 
     \begin{figure}[H]
@@ -1955,12 +1955,12 @@
                 (10000, 43.783582211)
                 };
 
-            \legend{\texttt{seq\_ext\_1},\texttt{mpi\_ext\_3} (1), \texttt{mpi\_ext\_3} (2), \texttt{mpi\_ext\_3} (4), \texttt{mpi\_ext\_3} (8), }
+            \legend{\texttt{seq\_exh\_1},\texttt{mpi\_exh\_3} (1), \texttt{mpi\_exh\_3} (2), \texttt{mpi\_exh\_3} (4), \texttt{mpi\_exh\_3} (8), }
             \end{axis}
         \end{tikzpicture}
 
-        \caption{Confronto delle performance di \texttt{seq\_ext\_1} e \texttt{mpi\_ext\_3} su 100 passi di simulazione da 1000 a 10000 corpi. I numeri tra parentesi nella legenda del grafico indicano il numero di thread attivi}
-        \label{fig:mpi_3_ext_graph}
+        \caption{Confronto delle performance di \texttt{seq\_exh\_1} e \texttt{mpi\_exh\_3} su 100 passi di simulazione da 1000 a 10000 corpi. I numeri tra parentesi nella legenda del grafico indicano il numero di thread attivi}
+        \label{fig:mpi_3_exh_graph}
     \end{figure}
 
     Tuttavia, tale miglioramento viene ottenuto \underline{solo ed esclusivamente} sul dispositivo MacBook Air M1, mentre per il dispositivo Lenovo IdeaPad 5 i risultati rimangono ancora una volta \textbf{invariati}.
@@ -1969,9 +1969,9 @@
 
     \section{Analisi dello speed-up e dell'efficienza}
 
-    Tramite i dati inerenti al runtime delle varie versioni parallelizzate e non mostrati nelle sezioni precedenti, consideriamo lo \textbf{speed-up} e l'\textbf{efficienza} ottenute da ognuna di tali versioni rispetto all'implementazione sequenziale \texttt{seq\_ext\_1} nel caso con 10000 corpi.
+    Tramite i dati inerenti al runtime delle varie versioni parallelizzate e non mostrati nelle sezioni precedenti, consideriamo lo \textbf{speed-up} e l'\textbf{efficienza} ottenute da ognuna di tali versioni rispetto all'implementazione sequenziale \texttt{seq\_exh\_1} nel caso con 10000 corpi.
 
-    In particolare, per entrambi i dispositivi e per ogni modalità di implementazione parallela viene riportato il programma i cui runtime medi hanno performato tendenzialmente meglio, ossia i programmi \texttt{omp\_ext\_3} e \texttt{mpi\_ext\_3}.
+    In particolare, per entrambi i dispositivi e per ogni modalità di implementazione parallela viene riportato il programma i cui runtime medi hanno performato tendenzialmente meglio, ossia i programmi \texttt{omp\_exh\_3} e \texttt{mpi\_exh\_3}.
 
     \begin{figure}[H]
         \centering
@@ -1979,17 +1979,17 @@
         \begin{tabular}{ l | c | c | c }
             \textbf{Programma} & \textbf{Runtime} & \textbf{Speed-up} & \textbf{Efficienza}\\
             \hline
-            \texttt{seq\_ext\_1} & 150.870804667 & 1.000000000 & 1.00 \\
+            \texttt{seq\_exh\_1} & 150.870804667 & 1.000000000 & 1.00 \\
             \hline
-            \texttt{omp\_ext\_3 (1)} & 166.075013638 & 0.908449750 & 0.90 \\
-            \texttt{omp\_ext\_3 (2)} & 92.657269955 & 1.628267320 & 0.81 \\
-            \texttt{omp\_ext\_3 (4)} & 50.705098152 & 2.975456318 & 0.74 \\
-            \texttt{omp\_ext\_3 (8)} & 31.612117290 & 4.772562473 & 0.59 \\
+            \texttt{omp\_exh\_3 (1)} & 166.075013638 & 0.908449750 & 0.90 \\
+            \texttt{omp\_exh\_3 (2)} & 92.657269955 & 1.628267320 & 0.81 \\
+            \texttt{omp\_exh\_3 (4)} & 50.705098152 & 2.975456318 & 0.74 \\
+            \texttt{omp\_exh\_3 (8)} & 31.612117290 & 4.772562473 & 0.59 \\
             \hline
-            \texttt{mpi\_ext\_3 (1)} & 159.60092449 & 0.945300318 & 0.94 \\
-            \texttt{mpi\_ext\_3 (2)} & 84.38146210 & 1.787961490 & 0.89 \\
-            \texttt{mpi\_ext\_3 (4)} & 49.61076498 & 3.041090068 & 0.76 \\
-            \texttt{mpi\_ext\_3 (8)} & 36.63834620 & 4.117838830 & 0.51 \\
+            \texttt{mpi\_exh\_3 (1)} & 159.60092449 & 0.945300318 & 0.94 \\
+            \texttt{mpi\_exh\_3 (2)} & 84.38146210 & 1.787961490 & 0.89 \\
+            \texttt{mpi\_exh\_3 (4)} & 49.61076498 & 3.041090068 & 0.76 \\
+            \texttt{mpi\_exh\_3 (8)} & 36.63834620 & 4.117838830 & 0.51 \\
         \end{tabular}
         \caption{Statistiche per dispositivo Lenovo IdeaPad 5}
         \label{fig:stats_ip5_1}
@@ -2001,17 +2001,17 @@
         \begin{tabular}{ l | c | c | c }
             \textbf{Programma} & \textbf{Runtime} & \textbf{Speed-up} & \textbf{Efficienza}\\
             \hline
-            \texttt{seq\_ext\_1} & 139.26667118 & 1.000000000 & 1.00 \\
+            \texttt{seq\_exh\_1} & 139.26667118 & 1.000000000 & 1.00 \\
             \hline
-            \texttt{omp\_ext\_3 (1)} & 142.753837109 & 0.975572174 & 0.97 \\
-            \texttt{omp\_ext\_3 (2)} & 101.364573956 & 1.373918577 & 0.68 \\
-            \texttt{omp\_ext\_3 (4)} & 56.463528633 & 2.466488981 & 0.61 \\
-            \texttt{omp\_ext\_3 (8)} & 51.738933086 & 2.691719038 & 0.33 \\
+            \texttt{omp\_exh\_3 (1)} & 142.753837109 & 0.975572174 & 0.97 \\
+            \texttt{omp\_exh\_3 (2)} & 101.364573956 & 1.373918577 & 0.68 \\
+            \texttt{omp\_exh\_3 (4)} & 56.463528633 & 2.466488981 & 0.61 \\
+            \texttt{omp\_exh\_3 (8)} & 51.738933086 & 2.691719038 & 0.33 \\
             \hline
-            \texttt{mpi\_ext\_3 (1)} & 127.15266371 & 1.095271362 & 1.09 \\
-            \texttt{mpi\_ext\_3 (2)} & 74.12223911 & 1.878878362 & 0.93 \\
-            \texttt{mpi\_ext\_3 (4)} & 50.02179480 & 2.784119837 & 0.69 \\
-            \texttt{mpi\_ext\_3 (8)} & 43.783582211 & 3.180796640 & 0.39 \\
+            \texttt{mpi\_exh\_3 (1)} & 127.15266371 & 1.095271362 & 1.09 \\
+            \texttt{mpi\_exh\_3 (2)} & 74.12223911 & 1.878878362 & 0.93 \\
+            \texttt{mpi\_exh\_3 (4)} & 50.02179480 & 2.784119837 & 0.69 \\
+            \texttt{mpi\_exh\_3 (8)} & 43.783582211 & 3.180796640 & 0.39 \\
         \end{tabular}
         \caption{Statistiche per dispositivo MacBook Air M1}
         \label{fig:stats_m1_1}
@@ -2069,8 +2069,8 @@
     
     Tali approssimazioni permettono di \textbf{risparmiare} una grande mole di calcoli, riducendo l'andamento asintotico del programma a $O(n \log n)$. È opportuno notare,inoltre, che il valore scelto per $\theta$ risulti fondamentale:
     \begin{itemize}
-        \item Se $\theta = 0.0$, l'algoritmo non approssimerà mai il calcolo, facendo degenerare l'intero algoritmo in una versione più complessa e lenta dell'im-plementazione estensiva della simulazione
-        \item Se $\theta = 1.0$, le prestazioni dell'algoritmo risultano estremamente migliori rispetto all'implementazione estensiva, producendo tuttavia un'errore di approssimazione rilevante, ma tuttavia abbastanza trascurabile
+        \item Se $\theta = 0.0$, l'algoritmo non approssimerà mai il calcolo, facendo degenerare l'intero algoritmo in una versione più complessa e lenta dell'im-plementazione esaustiva della simulazione
+        \item Se $\theta = 1.0$, le prestazioni dell'algoritmo risultano estremamente migliori rispetto all'implementazione esaustiva, producendo tuttavia un'errore di approssimazione rilevante, ma tuttavia abbastanza trascurabile
         \item Se $\theta \geq 1.25$, l'errore generato dall'approssimazione risulta eccessivamente alto
     \end{itemize}
 
@@ -2238,7 +2238,7 @@
                 (10000, 16.456793785)
                 };
 
-            \legend{\texttt{seq\_ext\_1},\texttt{seq\_bh\_1} }
+            \legend{\texttt{seq\_exh\_1},\texttt{seq\_bh\_1} }
             \end{axis}
         \end{tikzpicture}
 
@@ -2299,11 +2299,11 @@
                 (10000, 14.963076115)
                 };
 
-            \legend{\texttt{seq\_ext\_1},\texttt{seq\_bh\_1} }
+            \legend{\texttt{seq\_exh\_1},\texttt{seq\_bh\_1} }
             \end{axis}
         \end{tikzpicture}
 
-        \caption{Confronto delle performance di \texttt{seq\_ext\_1} e \texttt{seq\_bh\_1} con $\theta = 0.5$ su 100 passi di simulazione da 1000 a 10000 corpi. I numeri tra parentesi nella legenda del grafico indicano il numero di thread attivi}
+        \caption{Confronto delle performance di \texttt{seq\_exh\_1} e \texttt{seq\_bh\_1} con $\theta = 0.5$ su 100 passi di simulazione da 1000 a 10000 corpi. I numeri tra parentesi nella legenda del grafico indicano il numero di thread attivi}
         \label{fig:seq_1_bh_graph}
     \end{figure}
 
@@ -2484,9 +2484,9 @@
 
     \subsection{Analisi, limitazioni riscontrate e implementazione}
 
-    Come per l'implementazione estensiva, in particolare la versione \texttt{omp\_ext\_3}, il modo più diretto per poter parallelizzare l'algoritmo tramite OpenMP risulta essere tramite la \textbf{suddivisione a priori} dei corpi con cui i thread vanno a calcolare le varie interazioni.
+    Come per l'implementazione esaustiva, in particolare la versione \texttt{omp\_exh\_3}, il modo più diretto per poter parallelizzare l'algoritmo tramite OpenMP risulta essere tramite la \textbf{suddivisione a priori} dei corpi con cui i thread vanno a calcolare le varie interazioni.
     
-    Tuttavia, a differenza dell'implementazione estensiva, l'algoritmo di Barnes-Hut presenta una problematica aggiuntiva, ossia la \textbf{gestione dell'albero}: trattandosi di una struttura dati condivisa, risulta evidente pensare a problematiche relative all'\textbf{inserimento simultaneo dei nodi}, sia durante la creazione che durante l'aggiornamento.
+    Tuttavia, a differenza dell'implementazione esaustiva, l'algoritmo di Barnes-Hut presenta una problematica aggiuntiva, ossia la \textbf{gestione dell'albero}: trattandosi di una struttura dati condivisa, risulta evidente pensare a problematiche relative all'\textbf{inserimento simultaneo dei nodi}, sia durante la creazione che durante l'aggiornamento.
 
     Per gestire tale problema, sono state considerate le seguenti soluzioni:
 
@@ -2754,7 +2754,7 @@
     
     \subsection{Analisi, limitazioni riscontrate e implementazione}
     
-    Per parallelizzare l'algoritmo di Barnes-Hut utilizzando la libreria MPI si è optato per un approccio molto simile a quello della versione estensiva analizzando cosa era sconveniente e limitante fra quello che era possibile parallelizzare:
+    Per parallelizzare l'algoritmo di Barnes-Hut utilizzando la libreria MPI si è optato per un approccio molto simile a quello della versione esaustiva analizzando cosa era sconveniente e limitante fra quello che era possibile parallelizzare:
     \begin{enumerate}
         \item Creazione e aggiornamento dell'albero
         \item Calcolo della velocità di ogni corpo
@@ -2764,7 +2764,7 @@
     Un modo per parallelizzare la \textbf{creazione e l'aggiornamento} dell'albero sarebbe potuto essere quello di distribuire tra i processi \textbf{branch} diversi dell'albero per fare in modo che ognuno calcolasse la nuova disposizione dei nodi. Data però la natura sbilanciata dell'albero si avrebbero dei rami ricchi di nodi ed altri molto meno, dunque si avrebbero molti processi in wait che aspettano i processi più lenti per condividere la propria parte di albero ed eseguire il \textbf{mounting} dell'albero completo.
     In oltre ci sarebbe l'overhead aggiunto dalla divisione dei nodi e dei branch e soprattutto dalle comunicazioni aggiuntive necessarie. Dunque si è optato per lasciare che ogni processo modifichi per intero il proprio albero. 
     
-    Si è scelto di parallelizzare solo sul numero di corpi di cui calcolare la posizione per ridurre al minimo l'overhead delle molteplici comunicazioni che sono limitate, come per la versione estensiva, alle nuove posizioni calcolate. Ogni processo costruisce dunque il proprio albero e lo aggiorna con i valori delle posizioni condivise. 
+    Si è scelto di parallelizzare solo sul numero di corpi di cui calcolare la posizione per ridurre al minimo l'overhead delle molteplici comunicazioni che sono limitate, come per la versione esaustiva, alle nuove posizioni calcolate. Ogni processo costruisce dunque il proprio albero e lo aggiorna con i valori delle posizioni condivise. 
 
     \begin{figure}[H]
         \centering

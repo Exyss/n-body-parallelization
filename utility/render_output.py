@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib.animation import FuncAnimation
 
-SCALE_FACTOR = 4000000
+SCALE_FACTOR = 10000000
 
 class Corpo:
     def __init__(self, x, y, z):
