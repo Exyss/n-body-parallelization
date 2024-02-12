@@ -1,0 +1,9 @@
+Analisi e Implementazione sequenziale e parallela del problema degli n-corpi tramite metodo esaustivo e algoritmo di Barnes-Hut
+
+Librerie di parallelizzazione utilizzate: OpenMP ed MPI
+
+Riferimenti degli studenti:
+
+- Bianco Simone (bianco.1986936@studenti.uniroma1.it)
+- Coppola Armando (coppola.2003964@studenti.uniroma1.it)
+- D'Aprile Francessco (daprile.2016953@studenti.uniroma1.it)
