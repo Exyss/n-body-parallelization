@@ -10,7 +10,7 @@ perf.data*
 *.out
 
 output.csv
-render.mp4
+*.mp4
 
 seq_exh_1
 seq_exh_2
