@@ -14,7 +14,7 @@
     linkcolor=black,
     filecolor=magenta,      
     urlcolor=blue,
-    pdftitle={Overleaf Example},
+    pdftitle={N-Body Parallelization},
     pdfpagemode=FullScreen,
     }
 
@@ -1979,7 +1979,7 @@
         \begin{tabular}{ l | c | c | c }
             \textbf{Programma} & \textbf{Runtime} & \textbf{Speed-up} & \textbf{Efficienza}\\
             \hline
-            \texttt{seq\_exh\_1} & 150.870804667 & 1.000000000 & 1.00 \\
+            \texttt{seq\_exh\_1} & 150.870804667 & - & - \\
             \hline
             \texttt{omp\_exh\_3 (1)} & 166.075013638 & 0.908449750 & 0.90 \\
             \texttt{omp\_exh\_3 (2)} & 92.657269955 & 1.628267320 & 0.81 \\
@@ -2001,7 +2001,7 @@
         \begin{tabular}{ l | c | c | c }
             \textbf{Programma} & \textbf{Runtime} & \textbf{Speed-up} & \textbf{Efficienza}\\
             \hline
-            \texttt{seq\_exh\_1} & 139.26667118 & 1.000000000 & 1.00 \\
+            \texttt{seq\_exh\_1} & 139.26667118 & - & - \\
             \hline
             \texttt{omp\_exh\_3 (1)} & 142.753837109 & 0.975572174 & 0.97 \\
             \texttt{omp\_exh\_3 (2)} & 101.364573956 & 1.373918577 & 0.68 \\
@@ -3016,7 +3016,7 @@
         \begin{tabular}{ l | c | c | c }
             \textbf{Programma} & \textbf{Runtime} & \textbf{Speed-up} & \textbf{Efficienza}\\
             \hline
-            \texttt{seq\_bh\_2} & 12.456793785 & 1.000000000 & 1.00 \\
+            \texttt{seq\_bh\_2} & 12.456793785 & - & - \\
             \hline
             \texttt{omp\_bh (1)} & 14.921123028 & 0.834842911 & 0.83 \\
             \texttt{omp\_bh (2)} & 8.269041061 & 1.506437529 & 0.75 \\
@@ -3038,12 +3038,12 @@
         \begin{tabular}{ l | c | c | c }
             \textbf{Programma} & \textbf{Runtime} & \textbf{Speed-up} & \textbf{Efficienza}\\
             \hline
-            \texttt{seq\_bh\_2} & 10.109156609 & 1.000000000 & 1.00 \\
+            \texttt{seq\_bh\_2} & 10.109156609 & - & - \\
             \hline
             \texttt{omp\_bh (1)} & 11.421123028 & 0.885128072 & 0.88 \\
             \texttt{omp\_bh (2)} & 7.269041061 & 1.390713923 & 0.69 \\
             \texttt{omp\_bh (4)} & 5.244170761 & 1.927694019 & 0.48 \\
-            \texttt{omp\_bh (8)} & 4.263443470 & 2.371124815 & 0.30 \\
+            \texttt{omp\_bh (8)} & 4.211284123 & 2.40049266 & 0.30 \\
             \hline
             \texttt{mpi\_bh (1)} & 13.914565563 & 0.726516151 & 0.72 \\
             \texttt{mpi\_bh (2)} & 8.144491196 & 1.241226292 & 0.62 \\
